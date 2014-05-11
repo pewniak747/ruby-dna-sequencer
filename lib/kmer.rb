@@ -12,4 +12,8 @@ class KMer
   def ==(other)
     nucleotides == other.nucleotides
   end
+
+  def =~(other)
+    self == other
+  end
 end

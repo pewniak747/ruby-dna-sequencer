@@ -13,7 +13,17 @@ describe KMer do
     end
 
     it "is not equal to different sequence of nucleotides" do
-      expect(subject == KMer.new([double(:nucleotide)])).to be_false
+      expect(subject == KMer.new([ double(:nucleotide) ])).to be_false
+    end
+  end
+
+  describe "match" do
+    it "is true for the same sequence of nucleotides" do
+      expect(subject =~ KMer.new(nucleotides)).to be_true
+    end
+
+    it "is false for different sequence of nucleotides" do
+      expect(subject =~ KMer.new([ double(:nucleotide) ])).to be_false
     end
   end
 end
