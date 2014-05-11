@@ -17,6 +17,14 @@ class KMer
     self == other
   end
 
+  def first(count)
+    self.class.new(nucleotides.first(count))
+  end
+
+  def last(count)
+    self.class.new(nucleotides.last(count))
+  end
+
   def to_s
     nucleotides.map(&:code).join
   end

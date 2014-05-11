@@ -6,6 +6,7 @@ require_relative '../lib/nucleotide'
 require_relative '../lib/probe'
 require_relative '../lib/chip'
 require_relative '../lib/binary_chip'
+require_relative '../lib/binary_sequencer'
 
 if ARGV.size != 2
   puts "USAGE: sequence SEQUENCE_LENGTH KMER_LENGTH"
@@ -24,4 +25,13 @@ puts "SPECTRUM:"
 
 chip.spectrum.each do |probe|
   puts "* #{probe.kmer} - count: #{probe.more? ? 'more' : probe.count}"
+end
+
+anchor = sequence.first(kmer_length)
+sequencer = BinarySequencer.new(chip, anchor, sequence.length)
+
+puts "SEQUENCER RESULTS:"
+
+sequencer.results.each do |result|
+  puts "* #{result}"
 end
