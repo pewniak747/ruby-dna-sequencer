@@ -1,14 +1,15 @@
 class Nucleotide
-  attr_reader :code, :complementaries
-  private :complementaries
+  attr_reader :code, :complementaries, :alternatives
+  private :complementaries, :alternatives
 
-  def initialize(code, complementaries = nil)
+  def initialize(code, complementaries = nil, alternatives = [])
     @code = code
     @complementaries = complementaries || default_complementaries.fetch(code)
+    @alternatives = alternatives
   end
 
   def ==(other)
-    code == other.code
+    code == other.code || alternatives.include?(other.code)
   end
 
   def complementary?(other)

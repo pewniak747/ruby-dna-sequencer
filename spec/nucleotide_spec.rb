@@ -13,6 +13,18 @@ describe Nucleotide do
     it "is not equal with different code" do
       expect(subject == Nucleotide.new(:C)).to be_false
     end
+
+    describe "with alternative code" do
+      subject { Nucleotide.new(:W, [], [:A, :T]) }
+
+      it "is equal with alternatives" do
+        expect(subject == Nucleotide.new(:A)).to be_true
+      end
+
+      it "is not equal with no alternative" do
+        expect(subject == Nucleotide.new(:G)).to be_false
+      end
+    end
   end
 
   describe "#complementary?" do
