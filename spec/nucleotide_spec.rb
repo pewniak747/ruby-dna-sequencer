@@ -25,6 +25,16 @@ describe Nucleotide do
     end
   end
 
+  describe ".default" do
+    subject { Nucleotide.default }
+
+    its(:length) { should eq(4) }
+
+    it "returns four basic nucleotides" do
+      expect(subject.map(&:code)).to match_array([:A, :T, :C, :G])
+    end
+  end
+
   describe "default complementaries" do
     let(:adenine) { Nucleotide.new(:A) }
     let(:thymine) { Nucleotide.new(:T) }

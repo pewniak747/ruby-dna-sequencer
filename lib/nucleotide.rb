@@ -15,9 +15,17 @@ class Nucleotide
     complementaries.include?(other.code)
   end
 
+  def self.default
+    default_complementaries.keys.map { |c| new(c) }
+  end
+
   private
 
   def default_complementaries
+    self.class.default_complementaries
+  end
+
+  def self.default_complementaries
     {
       A: [:T],
       T: [:A],

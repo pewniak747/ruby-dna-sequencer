@@ -12,7 +12,6 @@ class Sequence < KMer
   end
 
   def self.random(count)
-    codes = [:A, :C, :G, :T]
-    from_string(Array.new(count) { codes.sample }.join)
+    new(Array.new(count) { Nucleotide.default.sample })
   end
 end
