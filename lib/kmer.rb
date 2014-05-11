@@ -16,4 +16,8 @@ class KMer
   def =~(other)
     self == other
   end
+
+  def to_s
+    nucleotides.map(&:code).join
+  end
 end
