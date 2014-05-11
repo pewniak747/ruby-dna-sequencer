@@ -5,6 +5,7 @@ require_relative '../lib/kmer'
 require_relative '../lib/nucleotide'
 require_relative '../lib/probe'
 require_relative '../lib/chip'
+require_relative '../lib/binary_chip'
 
 if ARGV.size != 2
   puts "USAGE: sequence SEQUENCE_LENGTH KMER_LENGTH"
@@ -14,8 +15,7 @@ end
 sequence_length = ARGV[0].to_i
 kmer_length = ARGV[1].to_i
 sequence = Sequence.random(sequence_length)
-probes = Nucleotide.default.repeated_permutation(kmer_length).map { |nucleotides| Probe.new(KMer.new(nucleotides), 1) }
-chip = Chip.new(probes)
+chip = BinaryChip.new(kmer_length)
 
 chip.analyze(sequence)
 
