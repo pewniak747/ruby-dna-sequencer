@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/sequence'
+require_relative '../lib/kmer'
+require_relative '../lib/nucleotide'
+require_relative '../lib/probe'
+require_relative '../lib/chip'
 
 if ARGV.size != 2
   puts "USAGE: sequence SEQUENCE_LENGTH KMER_LENGTH"
@@ -8,6 +12,16 @@ if ARGV.size != 2
 end
 
 sequence_length = ARGV[0].to_i
+kmer_length = ARGV[1].to_i
 sequence = Sequence.random(sequence_length)
+probes = Nucleotide.default.repeated_permutation(kmer_length).map { |nucleotides| Probe.new(KMer.new(nucleotides), 1) }
+chip = Chip.new(probes)
+
+chip.analyze(sequence)
 
 puts "SEQUENCE: #{sequence}"
+puts "SPECTRUM:"
+
+chip.spectrum.each do |probe|
+  puts "* #{probe.kmer} - more: #{probe.more?}"
+end
