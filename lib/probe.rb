@@ -22,4 +22,8 @@ class Probe
       counter.increment!
     end
   end
+
+  def length
+    kmer.length
+  end
 end

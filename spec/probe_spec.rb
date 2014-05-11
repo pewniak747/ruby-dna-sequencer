@@ -41,4 +41,11 @@ describe Probe do
       end
     end
   end
+
+  describe "#length" do
+    it "delegates to kmer" do
+      expect(kmer).to receive(:length).and_return(3)
+      expect(subject.length).to eq(3)
+    end
+  end
 end
