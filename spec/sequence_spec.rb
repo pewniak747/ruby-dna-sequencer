@@ -33,4 +33,12 @@ describe Sequence do
       expect(subject[2]).to eq(KMer.new(nucleotides[2..4]))
     end
   end
+
+  describe ".random" do
+    subject { Sequence.random(10) }
+
+    it "returns a sequence of specified length" do
+      expect(subject.length).to be(10)
+    end
+  end
 end
