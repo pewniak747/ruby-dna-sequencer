@@ -23,5 +23,5 @@ puts "SEQUENCE: #{sequence}"
 puts "SPECTRUM:"
 
 chip.spectrum.each do |probe|
-  puts "* #{probe.kmer} - more: #{probe.more?}"
+  puts "* #{probe.kmer} - count: #{probe.more? ? 'more' : probe.count}"
 end

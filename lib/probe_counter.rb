@@ -1,6 +1,6 @@
 class ProbeCounter
   attr_reader :count, :max_count
-  private :count, :max_count
+  private :max_count
 
   def initialize(max_count)
     @max_count = max_count

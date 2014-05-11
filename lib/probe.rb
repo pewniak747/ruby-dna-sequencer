@@ -17,6 +17,10 @@ class Probe
     counter.more?
   end
 
+  def count
+    counter.count
+  end
+
   def contact(other_kmer)
     if kmer =~ other_kmer
       counter.increment!
